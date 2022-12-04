@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios Eloquent JavaScript</title>              
+  </head>
+
+  <body>
+    <h1>Ejercicios Eloquent JavaScript</h1>
+
+    <script>
+
+
+
+
+// Looping a triangle
+
+/* 
+const triangle = (num) => {
+  for (let i = 1; i <= num; i++) {
+    let char = "";
+
+    for (let j = i; j > 0; j--) {
+      char += "#";
+    }
+    
+    console.log(char);
+  }
+}
+
+triangle(7);
+ */
+
+
+
+
+// Eloquent JavaScript Solution
+
+/* 
+for (let line = "#"; line.length < 8; line += "#")
+  console.log(line);
+ */
+
+
+
+
+
+
+
+
+// FizzBuzz
+
+/* 
+for (let num = 1; num <= 100; num++) {
+  if (num % 3 === 0 && num % 5 !== 0) {
+    console.log("Fizz");
+  } else if (num % 5 === 0 && num % 3 !== 0) {
+    console.log("Buzz");
+  } else {
+    console.log(num);
+  }
+
+  if (num % 3 === 0 && num % 5 === 0) {
+    console.log("FizzBuzz");
+}
+}
+ */
+
+
+ // Eloquent JavaScript Solution
+
+/* 
+ for (let n = 1; n <= 100; n++) {
+  let output = "";
+  if (n % 3 == 0) output += "Fizz";
+  if (n % 5 == 0) output += "Buzz";
+  console.log(output || n);
+ }
+ */
+
+
+
+
+
+
+
+
+// Chessboard
+
+/* 
+const chessboard = (row, col) => {
+  let board = "";
+
+  for (let i = 0; i < row; i++){
+    for (let j = 0; j < col; j++) {
+      if ((i + j) % 2 === 0) {
+        board += " "
+      } else {
+        board += "#"
+      }
+    }
+    board += "\n";
+  }
+
+  console.log(board);
+}
+
+chessboard(8, 8);
+chessboard(5, 3);
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+</body>
+</html>

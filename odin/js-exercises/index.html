@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odin JS Exercises</title>
+  </head>
+
+  <body>
+
+    <h1>Odin JS Exercises</h1>
+
+    <script>
+
+
+
+
+      /**
+ * ===== Troubleshooting =====
+ * The function below should log the number 2, however it does not, 
+ * see if you can fix it!
+ * Be sure to fix it in the spirit of the code, do not hard code the result.
+ */
+/* 
+function troubleshooting() {
+	const a = 1;
+	const b = 1;
+
+	let result;
+
+	// Edit between these lines
+	// =================================
+	result = a + b;
+
+	// =================================
+  console.log(result);
+	return result;
+}
+
+troubleshooting();
+
+ */
+
+
+
+
+
+
+/**
+ * The code below tells the browser to ask you for a number
+ * then if that number is `6`, it returns `true` otherwise it returns `false`
+ * 
+ * Change this code so it returns `true` when the number is greater than or equal to 10, and false if it is less than 10
+ */
+/* 
+ number = Number(prompt("enter a number"));
+
+function numberChecker() {
+	if(number >= 10) {
+    console.log(true);
+		return true;
+	} else {
+    console.log(false);
+		return false;
+	}
+}
+
+numberChecker();
+
+ */
+
+
+
+
+
+
+
+
+
+/**
+ * Lets do some math!
+ * Some rules first:
+ *   Enter the operations, replacing the `"?"`, make the computer do the work for you. 
+ *   Do not manually enter the answer, for example: "one plus ten" would look like 1+10
+ * 
+ * a = one plus eight
+ * b = 22 times three
+ * c = the *remainder* of 5/4
+ * d = the variable 'a' minus 17
+ * e = the sum of the previous four variables
+ */
+/* 
+ const a = 1 + 8;
+const b = 22 * 3;
+const c = 5 % 8;
+const d = a - 17;
+const e = a + b + c + d;
+
+console.log(a, b, c, d, e);
+
+ */
+
+
+
+
+
+
+
+/* BOOK CONSTRUCTOR EXERCISE */
+
+function book(title, author, pages, read) {
+  this.title;
+  this.author;
+  this.pages;
+  this.read;
+  this.info = function() {
+    let readStr = "";
+    if (read) {
+      readStr = "already read";
+    } else {
+      readStr = "not read yet";
+    }
+    return `${title} by ${author}, ${pages} pages, ${readStr}.`;
+  }
+}
+
+const b1 = new book("The power of now", "Eckhart Tolle", 251, true);
+
+console.log(b1.info());
+
+
+    </script>
+
+  </body>
+</html>

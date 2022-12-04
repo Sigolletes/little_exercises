@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculator</title>
+</head>
+<body>
+  <h1>Calculator</h1>
+</body>
+
+<script>
+
+const add = function(num1, num2) {
+	return "" + num1 +  num2;
+};
+
+const subtract = function(num1, num2) {
+	return num1 - num2;
+};
+
+const sum = function(num1, num2) {
+	return num1 + num2;
+};
+
+const multiply = function(num1, num2) {
+  return num1 * num2;
+};
+
+const power = function(num, pow) {
+	return num ** pow;
+};
+
+const factorial = function(num) {
+  let result = 1;
+	for (let i = num; i >= 1; i--) {
+    result *= i;
+  }
+  return result;
+};
+
+// Do not edit below this line
+mathematics = {
+  add,
+  subtract,
+  sum,
+  multiply,
+  power,
+  factorial
+};
+
+let n = mathematics.add(0, 5);
+console.log(n);
+n = mathematics.subtract(n, 2);
+console.log(n);
+n = mathematics.sum(n, 13);
+console.log(n);
+n = mathematics.multiply(n, 3);
+console.log(n);
+n = mathematics.power(n, 2);
+console.log(n);
+n = mathematics.factorial(5);
+console.log(n);
+//console.log(mathematics.multiply(value, 5));
+//console.log(mathematics.power(value, 5));
+//console.log(mathematics.factorial(7));
+
+</script>
+</html>

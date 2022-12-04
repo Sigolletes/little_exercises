@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios de JavaScript</title>              
+  </head>
+
+  <body>
+    <h1>Ejercicios de JavaScript</h1>
+
+    <script>
+
+
+
+
+/* _______________________________________________________________________
+1 - Programa una función que cuente el número de caracteres de una cadena de texto, pe. miFuncion("Hola Mundo") devolverá 10.
+_______________________________________________________________________ */
+/* 
+console.log("____________________________________________________");
+
+
+console.log("** FUNCTION COUNT CHARACTERS **");
+
+function charCount(str) {
+  console.log(str.length);
+}
+
+charCount("Hola Mundo");
+charCount("This is a function that counts the characters of an string.")
+
+console.log("____________________________________________________");
+ */
+
+
+
+
+
+
+
+/* 
+console.log("** FUNCTION COUNT CHARACTERS JONMIRCHA SOLUTION (FUNCIÓN DECLARADA) **");
+
+function contarCaracteres(cadena = "") {
+  if (!cadena) {
+    console.warn("No ingresaste ninguna cadena");
+  } else {
+    console.info(`La cadena "${cadena}" tiene ${cadena.length} caracteres.`);
+  }
+}
+
+contarCaracteres();
+contarCaracteres("Hola Mundo");
+
+
+
+
+console.log("** USING ARROW FUNCTION (FUNCIÓN EXPRESADA) **");
+
+const contarCaracteres2 = (cadena = "") => 
+(!cadena)
+  ? console.warn("No ingresaste ninguna cadena")
+  : console.info(`La cadena "${cadena}" tiene ${cadena.length} caracteres.`);
+
+contarCaracteres2();
+contarCaracteres2("Hola Mundo");
+
+console.log("____________________________________________________");
+ */
+
+
+
+
+
+
+
+
+/* _______________________________________________________________________
+2 - Programa una función que te devuelva el texto recortado según el número de caracteres indicados, pe. miFuncion("Hola Mundo", 4) devolverá "Hola".
+_______________________________________________________________________ */
+/* 
+console.log("** FUNCTION CUT STRING **");
+
+function cutStr(str, num) {
+  console.log(str.slice(0, num));
+}
+
+cutStr("Hola Mundo", 4);
+cutStr("This function cuts a string at the length it's passed to it.", 13);
+
+
+
+
+console.log("** JONMIRCHA USING ARROW FUNCTION, OPERADOR TERNARIO (FUNCIÓN EXPRESADA) **");
+
+const recortarTexto = (cadena = "", longitud = undefined) =>
+  (!cadena)
+    ? console.warn("No ingresaste una cadena de texto")
+    : (longitud === undefined)
+      ? console.warn("No ingresaste la longitud para recortar el texto")
+      : console.info(cadena.slice(0, longitud));
+
+    
+recortarTexto("Hola Mundo", 4);
+recortarTexto();
+recortarTexto("This function cuts a string at the length it's passed to it.", 13);
+recortarTexto("Hola");
+
+console.log("____________________________________________________");
+ */
+
+
+
+
+
+
+
+
+/* _______________________________________________________________________
+3 - Programa una función que dada una String te devuelva un Array de textos separados por cierto caracter, pe. miFuncion('hola que tal', ' ') devolverá ['hola', 'que', 'tal'].
+_______________________________________________________________________ */
+/* 
+console.log("** FUNCTION SPLIT STRING **");
+
+function splitStr(str, separator) {
+  console.log(str.split(separator));
+}
+
+splitStr("hola que tal", " ");
+splitStr("This function separates a string every character you pass to it.", " ")
+splitStr("This, is an example, of, another character, to, separate, the string, and you can see, that character, is not passed, to the array.", ",");
+
+
+
+
+console.log("** JONMIRCHA USING ARROW FUNCTION **");
+
+const cadenaAArreglo = (cadena = "", separador = undefined) =>
+  (!cadena)
+    ? console.warn("No ingresaste una cadena de texto")
+    : (separador === undefined)
+      ? console.warn("No ingresaste el caracter separador")
+      : console.info(cadena.split(separador));
+
+cadenaAArreglo("hola que tal", " ");
+cadenaAArreglo("This function separates a string every character you pass to it.", " ")
+cadenaAArreglo("This, is an example, of, another character, to, separate, the string, and you can see, that character, is not passed, to the array.", ",");
+cadenaAArreglo("", " ");
+cadenaAArreglo("Hola Mundo");
+
+console.log("____________________________________________________");
+ */
+
+
+
+
+
+
+
+
+
+/* _______________________________________________________________________
+4 - Programa una función que repita un texto X veces, pe. miFuncion('Hola Mundo', 3) devolverá Hola Mundo Hola Mundo Hola Mundo.
+_______________________________________________________________________ */
+/* 
+console.log("** FUNCTION REPEAT TEXT **");
+
+function repetirTexto(str, num) {
+  let newStr = "";
+  for(let i = 1; i < num; i++) {
+    newStr += str;
+    if (i < num) {
+      newStr += " ";
+    }
+  }
+  console.log(newStr);
+}
+
+repetirTexto("Hola Mundo", 3);
+repetirTexto("This function repeats a text.", 5);
+
+
+
+
+console.log("** JONMIRCHA **");
+
+const repetirTexto2 = (texto = "", veces = undefined) => {
+  if (!texto) return console.warn("No ingresaste un texto");
+
+  if (veces === undefined) return console.warn("No ingresaste el numero de veces a repetir el texto");
+
+  if (veces === 0) return console.error("El número de veces no puede ser 0");
+
+  if (Math.sign(veces) === -1) return console.error("El número de veces no puede ser negativo");
+
+  for (let i = 1; i <= veces; i++) console.info(`${texto}, ${i}`);
+}
+
+repetirTexto2("Hola Mundo", 3);
+repetirTexto2("This function repeats a text.", 5);
+repetirTexto2("Hola Mundo", 0);
+repetirTexto2("Hola Mundo", -20);
+repetirTexto2("", 20);
+repetirTexto2("Hola Mundo");
+
+console.log("____________________________________________________");
+ */
+
+
+
+
+
+
+
+
+/* _______________________________________________________________________
+5 - Programa una función que invierta las palabras de una cadena de texto, pe. miFuncion("Hola Mundo") devolverá "odnuM aloH".
+_______________________________________________________________________ */
+/* 
+console.log("** FUNCTION REVERSE STRING **");
+
+function reverseStr(str) {
+  if (!str) {
+    console.warn("You didn't pass any string");
+  } else {
+    let splitStr = str.split("");
+    let reverseArray = splitStr.reverse();
+    let joinArray = reverseArray.join("");
+    console.info(`The reverse of the string "${str}" is ${joinArray}.`)
+  }
+}
+
+reverseStr();
+reverseStr("Hola Mundo");
+reverseStr("This function reverses a string.");
+
+
+
+console.log("** JONMIRCHA OPERADOR TERNARIO **");
+
+const invertirCadena = (cadena = "") =>
+  (!cadena)
+    ? console.warn("No ingresaste una cadena de texto")
+    : console.info(cadena.split("").reverse().join(""));
+
+invertirCadena();
+invertirCadena("Hola Mundo");
+invertirCadena("This function reverses a string.");
+
+
+console.log("____________________________________________________");
+ */
+
+
+
+
+
+
+
+
+/* _______________________________________________________________________
+6 - Programa una función para contar el número de veces que se repite una palabra en un texto largo, pe. miFuncion("hola mundo adios mundo", "mundo") devolverá 2.
+_______________________________________________________________________ */
+/* 
+console.log("** FUNCTION COUNT NUMBER OF TIMES A WORD APPEAR IN A TEXT **");
+
+function countWord2(text = "", word = "") {
+  if (!text) return console.warn("You didn't pass any text");
+
+  if (!word) return console.warn("You didn't pass any word");
+
+  let reg = new RegExp(`${word}`, 'gi');
+  let arr = (text.match(reg));
+  console.info(`The word "${word}" is repeated ${arr.length} times in the text.`);
+}
+
+countWord2("This function is a FUNCTION that returnes the number of times that a word is repeated in a text, like this one that repeates Function several times.", "function");
+countWord2();
+countWord2("This is a test");
+
+
+console.log("** JONMIRCHA **")
+
+const textoEnCadena = (cadena = "", texto = "") => {
+  if (!cadena) return console.warn("No ingresaste el texto largo");
+
+  if (!texto) return console.warn("No ingresaste la palabra a evaluar");
+
+  let i = 0,
+    contador = 0;
+
+  while (i !== -1) {
+    i = cadena.indexOf(texto, i);
+    if (i !== -1) {
+      i++;
+      contador++;
+    }
+  }
+
+  return console.info(`La palabra ${texto} se repite ${contador} veces`);
+}
+
+textoEnCadena();
+textoEnCadena("", "word");
+textoEnCadena("Hola mundo, adiós mundo");
+textoEnCadena("Hola mundo, adiós mundo", "mundo");
+
+
+console.log("____________________________________________________");
+ */
+
+
+
+
+
+
+
+
+/* _______________________________________________________________________
+7 - Programa una función que valide si una palabra o frase dada, es un palíndromo (que se lee igual en un sentido que en otro), pe. mifuncion("Salas") devolverá true.
+_______________________________________________________________________ */
+/*  
+console.log("** PALINDROME FUNCTION **");
+
+const palindrome = (text = "") => {
+
+  if (!text) return console.warn("You didn't pass any text");
+
+  let reverseText = text.split("").reverse().join("").toLowerCase()
+
+  if (text.toLowerCase() === reverseText) {  
+    return console.info(`The word "${text}" is a palindrome.`);
+
+  } else {
+    return console.info(`The word "${text}" is not a palindrome.`);
+  }
+
+}
+
+palindrome();
+palindrome("Salas");
+palindrome("Abuela");
+ */
+/* 
+console.log("** JONMIRCHA SOLUTION **");
+
+const palindromo = (palabra = "") => {
+  if (!palabra) return console.warn("No ingresaste una palabra o frase");
+
+  palabra = palabra.toLowerCase();
+  let alReves = palabra.split("").reverse().join("");
+
+  return (palabra === alReves)
+    ? console.info(`Sí es palíndromo, Palabra original ${palabra}, Palabra al revés ${alReves}`)
+    : console.info(`No es palíndromo, Palabra original ${palabra}, Palabra al revés ${alReves}`)
+}
+
+palindromo();
+palindromo("Hola Mundo");
+palindromo("SaLas");
+
+console.log("____________________________________________________");
+  */
+
+
+
+ /*  
+  console.log("** FREECODECAMP SOLUTION (MINE) **");
+
+function palindrome(str) {
+  let reg = /[a-z0-9]/g;
+  let bool = false;
+
+  let str2 = str
+    .toLowerCase()
+    .match(reg)
+    .join("");
+
+  let str3 = str2
+    .split("")
+    .reverse()
+    .join("");
+
+  if (str2 === str3) {
+    bool = true;
+  }
+
+  console.log(bool);
+  return bool;
+}
+
+palindrome("Dabale arroz a la zorra el abad");
+
+ */
+
+
+
+
+
+
+
+
+/* _______________________________________________________________________
+8 - Programa una función que elimine cierto patrón de caracteres de un texto dado, pe. miFuncion("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz") devolverá  "1, 2, 3, 4 y 5.
+_______________________________________________________________________ */
+/* 
+console.log("** FUNCTION DELETE CHARACTERS IN A TEXT **");
+
+function deleteChar(text = "", char = "") {
+  
+  if (!text) return console.warn("You didn't pass any text");
+  if (!char) return console.warn("You didn't pass any character");
+  
+  let reg = new RegExp(`${char}`, "ig");
+  let result = text.replace(reg, "");
+  return console.info(result);
+}
+
+deleteChar();
+deleteChar("This is a text to make a test.", "");
+
+deleteChar("This is, a text, to, make a test.", ",");
+deleteChar("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz");
+
+
+console.log("** JONMIRCHA SOLUTION **");
+
+const eliminarCaracteres = (texto = "", patron = "") =>
+  (!texto)
+    ? console.warn("No ingresaste un texto")
+    : (!patron)
+      ? console.warn("No ingresaste un patrón de carácteres")
+      : console.info(texto.replace(new RegExp(patron, "ig"), ""));
+
+eliminarCaracteres();
+eliminarCaracteres("xyz1, xyz2, xyz3, xyz4 y xyz5");
+eliminarCaracteres("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz");
+
+
+console.log("____________________________________________________");
+ */
+
+
+
+
+
+
+
+
+/* _______________________________________________________________________
+9 - Programa una función que obtenga un numero aleatorio entre 501 y 600.
+_______________________________________________________________________ */
+/* 
+console.log("** RANDOM NUMBER **");
+
+const randomNum = () => console.info(Math.trunc(Math.random() * (601 - 501) + 501));
+
+randomNum();
+
+console.log("_______________________________________");
+
+
+
+console.log("** JONMIRCHA SOLUTION **");
+
+const aleatorio = () => console.info(Math.round((Math.random() * 100) + 500));
+
+aleatorio();
+ */
+
+
+
+
+
+
+
+
+/* _______________________________________________________________________
+10 - Programa una función que reciba un número y evalúe si es capicúa o no (que se lee igual en un sentido que en otro), pe. miFuncion(2002) devolverá true.
+_______________________________________________________________________ */
+/* 
+console.log("** CAPICUA NUMBER **");
+
+const capicua = (num = undefined) => {
+  if (!isNaN(num)) {
+    num2 = num.toString().split("").reverse().join("");
+    if (num == num2) {
+      console.info(`The number ${num} is capicua, his reverse is ${num2}.`);
+    } else {
+      console.info(`The number ${num} is not capicua, his reverse is ${num2}.`);
+    }
+  } else {
+    console.error("You didn't pass any number.")
+  }
+}
+
+capicua(4228);
+capicua(2002);
+capicua();
+capicua("hola");
+capicua({});
+capicua(212.212);
+
+console.log("_______________________________________");
+
+
+
+console.log("** JONMIRCHA SOLUTION **");
+
+
+const capicua2 = (numero = 0) => {
+  if (!numero) return console.warn("No ingresaste un número");
+
+  if (typeof numero !== "number") return console.error(`El valor ${numero} ingresado NO es un número`);
+
+  numero = numero.toString();
+  let alReves = numero.split("").reverse().join("");
+
+  return (numero === alReves)
+    ? console.info(`Sí es capicúa, número original ${numero}, número al revés ${alReves}`)
+    : console.info(`No es capicúa, número original ${numero}, número al revés ${alReves}`)
+
+}
+
+capicua2();
+capicua2("19");
+capicua2({});
+capicua2(2002);
+capicua2(2000);
+capicua2(212.212);
+ */
+
+
+
+
+
+
+
+
+/* _______________________________________________________________________
+11 - Programa una función que calcule el factorial de un número (El factorial de un entero positivo n, se define como el producto de todos los números enteros positivos desde 1 hasta n), pe. miFuncion(5) devolverá 120.
+_______________________________________________________________________ */
+/* 
+console.log("** FACTORIAL OF A NUMBER **");
+
+const factorial = (num = undefined) => {
+  if (num <= 0) {
+    console.error("The number can't be 0 or negative.")
+  } else if (!isNaN(num)) {
+      let result = 1;
+      for (let i = 1; i <= num; i++) {
+        result *= i; 
+      }
+      return console.info(`The factorial of ${num} is ${result}`);
+  } else {
+    console.error("You didn't pass any number.")
+  }
+}
+
+factorial();
+factorial("Hola");
+factorial(5);
+factorial(7);
+factorial(0);
+factorial(-2);
+ */
+
+
+
+
+
+
+
+/* _______________________________________________________________________
+12 - Programa una función que determine si un número es primo (aquel que solo es divisible por sí mismo y 1) o no, pe. miFuncion(7) devolverá true.
+_______________________________________________________________________ */
+/*  
+console.log("** PRIME NUMBER **");
+
+const prime = (num = undefined) => {
+  if (typeof num !== "number") return console.error(`You didn't pass any number`);
+
+  if (num <= 1) return console.error(`The number has to be higher than 1`);
+
+  let result = false;
+
+  for (let i = num - 1; i >= num / 2; i--) {
+    if ((num % i) === 0) {
+      return console.info(`The number ${num} is not a prime.`);     
+    } else {
+      result = true;
+    }
+  }
+  if (result = true) {
+    return console.info(`The number ${num} is a prime.`);
+  }
+}
+
+prime();
+prime(0);
+prime(1);
+prime(-13);
+prime(7);
+prime(13);
+prime(24);
+
+ */
+
+
+
+
+
+
+
+
+/* _______________________________________________________________________
+13 - Programa una función que determine si un número es par o impar, pe. miFuncion(29) devolverá Impar.
+_______________________________________________________________________ */
+/* 
+console.log("** EVEN AND ODD NUMBERS **");
+
+const even = (num = undefined) => {
+  if (typeof num !== "number") return console.error(`You didn't pass any number`);
+
+  return (num % 2 === 0)
+    ? console.info(`The number ${num} is even.`)
+    : console.info(`The number ${num} is odd.`)
+
+  }
+
+even(100);
+even(13);
+even(-13);
+even(-2);
+even(0);
+even();
+ */
+
+
+
+
+
+
+
+
+/* _______________________________________________________________________
+14 - Programa una función para convertir grados Celsius a Fahrenheit y viceversa, pe. miFuncion(0,"C") devolverá 32°F.
+_______________________________________________________________________ */
+/* 
+console.log("** CELSIUS AND FAHRENHEIT **");
+
+const temp = (num, type) => {
+  if (typeof num !== "number") return console.warn(`You didn't pass any number`);
+
+  switch (type) {
+    case 'c':
+    case 'C':
+      return console.info(`${num}° Celsius are ${(num * 1.8 + 32).toFixed(1)}° Fahrenheit.`);
+      break;
+    case 'f':
+    case 'F':
+      return console.info(`${num}° Fahrenheit are ${((num - 32) / 1.8).toFixed(1)}° Celsius.`);
+      break;
+    default:
+      return console.warn("You have to declare Celsius with 'c' and Fahrenheit with 'f'.");
+  }
+
+}
+
+temp();
+temp(5, "x");
+temp(0, "c");
+temp(0, "f");
+temp(55, "C");
+temp(55, "F");
+temp(5);
+ */
+
+
+
+
+
+
+
+/* _______________________________________________________________________
+15 - Programa una función para convertir números de base binaria a decimal y viceversa, pe. miFuncion(100,2) devolverá 4 base 10.
+_______________________________________________________________________ */
+
+/* 
+
+const decimal = (num, base) => {
+
+  if (typeof num !== "number") return console.warn(`You didn't pass any number`);
+
+  let num2 = num;
+  let result = [];
+
+
+
+  if (num == 0) {
+    result.unshift(0);
+  }
+
+  while (num2 >= 1) {
+
+    if (num2 % 2 == 0) {
+      result.unshift(0);
+      num2 = Math.trunc(num2 / 2);
+    } else {
+      result.unshift(1);
+      num2 = Math.trunc(num2 / 2);
+    }
+  } 
+
+
+
+  console.log(result);
+}
+
+
+
+decimal(100,2);
+
+ */
+
+
+
+
+
+// jonmircha solution
+
+
+/* 
+const convertirBinarioDecimal = (numero = undefined, base = undefined) => {
+
+  if (numero === undefined) return console.warn("No ingresaste el número a convertir");
+
+  if (typeof numero !== "number") return console.error(`El valor "${numero}" ingresado NO es un número`);
+
+  if (base === undefined) return console.warn("No ingresaste la base a convertir");
+
+  if (typeof base !== "number") return console.error(`El valor "${base}" ingresado NO es un número`);
+
+  if (base == 2) {
+    return console.info(`${numero} base ${base} = ${parseInt(numero, base)} base 10`);
+  } else if (base === 10) {
+    return console.info(`${numero} base ${base} = ${numero.toString(base)} base 2`);
+  } else {
+    return console.error("El tipo de base a convertir NO es válido");
+  }
+
+
+}
+
+convertirBinarioDecimal();
+convertirBinarioDecimal("2");
+convertirBinarioDecimal(100);
+convertirBinarioDecimal(100, 2);
+convertirBinarioDecimal(4, 10); 
+ */
+
+
+
+
+
+
+
+
+
+/* _______________________________________________________________________
+16 - Programa una función que devuelva el monto final después de aplicar un descuento a una cantidad dada, pe. miFuncion(1000, 20) devolverá 800.
+_______________________________________________________________________ */
+
+/* 
+const offer = (price, discount) => {
+
+  if (typeof price !== "number" || typeof discount !== "number") return console.error("You didn't pass the correct parameters.");
+
+  let final = price * (100 - discount) / 100;
+
+  console.log(`The final price of ${price} with ${discount}% of discount is ${final}.`);
+
+}
+
+offer(1000, 20);
+offer(2, "hi");
+
+ */
+
+
+
+
+
+
+
+
+
+/* _______________________________________________________________________
+17 - Programa una función que dada una fecha válida determine cuantos años han pasado hasta el día de hoy, pe. miFuncion(new Date(1984,4,23)) devolverá 35 años (en 2020).
+_______________________________________________________________________ */
+
+/* 
+function howLong(year, month, day) {
+
+  if (typeof year !== "number" || typeof month !== "number" || typeof day !== "number") return console.warn("You didn't pass the correct parameters.");
+
+  if (month < 1 || month > 12) return console.error("The month has to be from 1 to 12");
+
+  if (day < 1 || day > 31) return console.error("The day has to be from 1 to 31");
+
+
+  let date = new Date();
+  let today = new Date(date.getFullYear, date.getMonth, date.getDay);
+  let then = new Date(year, month - 1, day);
+
+  let passed = Math.round((new Date() - then) / 1000 / 3600 / 24 / 365,25);
+
+
+  return (Math.sign(passed) === 1)
+    ? console.info(`${passed} years has passed since ${year}`)
+    : (Math.sign(passed) === -1)
+        ? console.info(`${Math.abs(passed)} years for ${year}`)
+        : console.info("It's the same date");
+  
+}
+
+
+howLong(1984,4,23);
+howLong(2050,1,23);
+howLong(2022,8,3);
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* _______________________________________________________________________
+18) Programa una función que dada una cadena de texto cuente el número de vocales y consonantes, pe. miFuncion("Hola Mundo") devuelva Vocales: 4, Consonantes: 5.
+_______________________________________________________________________ */
+
+/* 
+const letters = (str = "") => {
+
+  if(typeof str !== "string") return console.warn("This is not a string");
+
+  if(!str) return console.error("The string cannot be empty");
+
+  let voc = /[aeiouáéíóúüàèò]/gi;
+  let cons = /[bcçdfghjklmnñpqrstvwxyz]/gi;
+
+  if(!str.match(voc) && !str.match(cons)) return console.info(`Vocals = 0 
+Consonants = 0`);
+
+  console.info(`
+Vocals = ${(str.match(voc)).length}
+Consonants = ${(str.match(cons)).length}
+  `);
+
+}
+
+letters("This is a test.");
+letters("AÇÒ és valenciÀ");
+letters("Tamaño");
+letters("...");
+letters("");
+letters(23);
+ */
+
+
+
+
+
+
+
+/* _______________________________________________________________________
+19) Programa una función que valide que un texto sea un nombre válido, pe. miFuncion("Jonathan MirCha") devolverá verdadero.
+_______________________________________________________________________ */
+
+/* 
+const trueName = (name) => {
+
+  if(typeof name !== "string") return console.warn(` ${name} is not a string`);
+
+  let reg = /[^a-z áéíóúüàèòçñ]/gi;
+
+  return (reg.test(name))
+    ? console.info(`"${name}" isn't a valid name`)
+    : console.info(`"${name}" is a valid name`);
+
+}
+
+trueName("Jonathan MirCha");
+trueName("Júlia Pingüino");
+trueName("This is a test.");
+trueName(23);
+trueName();
+
+ */
+
+
+
+
+
+
+
+
+/* _______________________________________________________________________
+20) Programa una función que valide que un texto sea un email válido, pe. miFuncion("jonmircha@gmail.com") devolverá verdadero.
+_______________________________________________________________________ */
+
+
+/* 
+
+const trueEmail = (email) => {
+
+  reg = /[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})/i;
+
+  return (reg.test(email))
+    ? console.info(`"${email}" is a valid email`)
+    : console.info(`"${email}" isn't a valid email`);
+
+}
+
+trueEmail("thisisatest@gmail.com");
+trueEmail("thisisatest23!@gmail.com");
+trueEmail("thisisatest..@gmail.com");
+trueEmail("casa_blanca11@hotmail.com");
+
+ */
+
+
+
+
+
+
+
+
+/* _______________________________________________________________________
+21) Programa una función que dado un array numérico devuelve otro array con los números elevados al cuadrado, pe. mi_funcion([1, 4, 5]) devolverá [1, 16, 25].
+_______________________________________________________________________ */
+
+/* 
+const arrSqr = (arr) => {
+
+  let result = [];
+
+  for (let num of arr) {
+    result.push(Math.pow(num, 2));
+  }
+
+  return console.info(result);
+
+}
+
+
+arrSqr([1, 4, 5]);
+
+ */
+
+
+
+
+
+
+
+
+
+
+
+/* _______________________________________________________________________
+22) Programa una función que dado un array devuelva el número mas alto y el más bajo de dicho array, pe. miFuncion([1, 4, 5, 99, -60]) devolverá [99, -60].
+_______________________________________________________________________ */
+
+/* 
+const maxMin = (arr) => {
+
+  let max = Math.max(...arr),
+    min = Math.min(...arr);
+
+  return console.info(`The bigger number is ${max} and the lower is ${min}.`);
+
+}
+
+
+maxMin([23, 54, 1, 0, 345, -22]);
+ */
+
+
+
+
+
+
+
+
+
+
+
+/* _______________________________________________________________________
+23) Programa una función que dado un array de números devuelva un objeto con 2 arreglos en el primero almacena los números pares y en el segundo los impares, pe. miFuncion([1,2,3,4,5,6,7,8,9,0]) devolverá {pares: [2,4,6,8,0], impares: [1,3,5,7,9]}.
+_______________________________________________________________________ */
+
+/* 
+const evenOdd = (arr) => {
+
+  let even = [],
+    odd = [],
+    result = {even: even, odd: odd};
+
+  for (let num of arr) {
+
+    if (num % 2 === 0) {
+
+      even.push(num);
+
+    } else {
+
+      odd.push(num);
+
+    }
+  }
+
+  return console.info(result);
+
+}
+
+
+evenOdd([1, 2, 3, 4, 5]);
+
+ */
+
+
+
+
+/* jonmircha solution */
+
+/* 
+const separarParesImpares = (arr = undefined) => {
+  if (arr === undefined) return console.warn("No ingresaste un arreglo de números");
+
+  if (!(arr instanceof Array)) return console.error("El valor que ingresaste no es un arreglo");
+
+  if (arr.length === 0) return console.error("El arreglo está vacío");
+
+  for (let num of arr) {
+    if (typeof num !== "number") return console.error(`El valor ${num} ingresado, NO es un número`);
+  }
+
+  return console.info({
+    pares: arr.filter(num => num % 2 === 0),
+    impares: arr.filter(num => num % 2 === 1)
+  })
+}
+
+separarParesImpares([1, 2, 3, 4, 5]);
+
+ */
+
+
+
+
+/* _______________________________________________________________________
+24) Programa una función que dado un arreglo de números devuelva un objeto con dos arreglos, el primero tendrá los numeros ordenados en forma ascendente y el segundo de forma descendiente, pe. miFuncion([7, 5,7,8,6]) devolverá { asc: [5,6,7,7,8], desc: [8,7,7,6,5] }.
+_______________________________________________________________________ */
+
+/* 
+const order = (arr = undefined) => {
+
+  if (arr === undefined) return console.warn("You didn't pass anything");
+
+  if (!(arr instanceof Array)) return console.error("You didn't pass an array");
+
+  if (arr.length === 0) return console.error("The array is empty");
+
+  for (let num of arr) {
+    if (typeof num !== "number") return console.error(`The value ${num} isn't a number`);
+  } 
+
+  return console.info({
+    arr,
+    asc: arr.map(el => el).sort((a,b) => a - b),
+    desc: arr.map(el => el).sort((a,b) => a - b).reverse()
+  });
+
+}
+
+
+order([7, 5, 7, 8, 16]);
+ */
+
+
+
+
+
+
+
+
+/* _______________________________________________________________________
+25) Programa una función que dado un arreglo de elementos, elimine los duplicados, pe. miFuncion(["x", 10, "x", 2, "10", 10, true, true]) devolverá ["x", 10, 2, "10", true].
+_______________________________________________________________________ */
+
+
+function noRepeat(arr = undefined) {
+
+  if (arr === undefined) return console.warn("You didn't pass anything");
+
+  if (!(arr instanceof Array)) return console.error("You didn't pass an array");
+
+  if (arr.length === 0) return console.error("The array is empty");
+
+  let result = arr.filter((item, index) => {
+    return arr.indexOf(item) === index;
+  });
+
+  console.info(result);
+}
+
+noRepeat(["x", 10, "x", 2, "10", 10, true, true]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* _______________________________________________________________________
+26) Programa una función que dado un arreglo de números obtenga el promedio, pe. promedio([9,8,7,6,5,4,3,2,1,0]) devolverá 4.5.
+_______________________________________________________________________ */
+
+
+const average = (arr = undefined) => {
+
+  if (arr === undefined) return console.warn("You didn't pass anything");
+
+  if (!(arr instanceof Array)) return console.error("You didn't pass an array");
+
+  if (arr.length === 0) return console.error("The array is empty");
+
+  for (let num of arr) {
+    if (typeof num !== "number") return console.error(`The value ${num} isn't a number`);
+  } 
+
+  return console.info(arr.reduce(
+    (prev, curr) => prev + curr, 0
+  ) / arr.length)
+
+}
+
+average([1, 2, 3, 4]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* _______________________________________________________________________
+27) Programa una clase llamada Pelicula.
+
+La clase recibirá un objeto al momento de instanciarse con los siguentes datos: id de la película en IMDB, titulo, director, año de estreno, país o países de origen, géneros y calificación en IMBD.
+  - Todos los datos del objeto son obligatorios.
+  - Valida que el id IMDB tenga 9 caracteres, los primeros 2 sean letras y los 
+     7 restantes números.
+  - Valida que el título no rebase los 100 caracteres.
+  - Valida que el director no rebase los 50 caracteres.
+  - Valida que el año de estreno sea un número entero de 4 dígitos.
+  - Valida que el país o paises sea introducidos en forma de arreglo.
+  - Valida que los géneros sean introducidos en forma de arreglo.
+  - Valida que los géneros introducidos esten dentro de los géneros 
+     aceptados*.
+
+  - Crea un método estático que devuelva los géneros aceptados*.
+  - Valida que la calificación sea un número entre 0 y 10 pudiendo ser 
+    decimal de una posición.
+  - Crea un método que devuelva toda la ficha técnica de la película.
+  - A partir de un arreglo con la información de 3 películas genera 3 
+    instancias de la clase de forma automatizada e imprime la ficha técnica 
+    de cada película.
+
+* Géneros Aceptados: Action, Adult, Adventure, Animation, Biography, Comedy, Crime, Documentary ,Drama, Family, Fantasy, Film Noir, Game-Show, History, Horror, Musical, Music, Mystery, News, Reality-TV, Romance, Sci-Fi, Short, Sport, Talk-Show, Thriller, War, Western.
+_______________________________________________________________________ */
+
+class Movie {
+
+  constructor([id, title, director, year, country, genre, rating]) {
+
+    if (!id || !title || !director || !year || !country || !genre || !rating) {
+      console.warn("All parameters are necessary");
+    }
+
+    const regId = /[a-z]{2}\d{7}/i;
+    if (!regId.test(id)) {
+      console.warn("The id has to have 2 letters followed by 7 numbers");
+    }
+
+    if (title.length > 100) {
+      console.warn("The maximum length for the title is 100 characters");
+    }
+
+    if (director.length > 50) {
+      console.warn("The maximum length for the director is 50 characters");
+    }
+
+    const regYear = /\d{4}/;
+    if (!regYear.test(year)) {
+      console.warn("The year has to have 4 numbers");
+    }
+
+    if (!(country instanceof Array)) return console.warn("The country or countries have to be entered in an array");
+
+    if (!(genre instanceof Array)) return console.warn("The genre or genres have to be entered in an array");
+
+    let acceptedGenre = ["action", "adult", "adventure", "animation", "biography", "comedy", "crime", "documentary", "drama", "family", "fantasy", "film noir", "game-show", "history", "horror", "musical", "music", "mistery", "news", "reality-tv", "romance", "sci-fi", "short", "talk-show", "thriller", "war", "western"];
+
+    this.id = id;
+    this.title = title;
+    this.director = director;
+    this.year = year;
+    this.country = country;
+    this.genre = genre;
+    this.rating = rating;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+  </body>
+</html>
