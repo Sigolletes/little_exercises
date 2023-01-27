@@ -107,7 +107,7 @@ console.log(a, b, c, d, e);
 
 
 /* BOOK CONSTRUCTOR EXERCISE */
-
+/* 
 function book(title, author, pages, read) {
   this.title;
   this.author;
@@ -127,6 +127,64 @@ function book(title, author, pages, read) {
 const b1 = new book("The power of now", "Eckhart Tolle", 251, true);
 
 console.log(b1.info());
+ */
+
+
+
+
+ /* RECURSIVE EXERCISES */
+
+// Sum all numbers
+
+/* function sumRange (n) {
+  if (n === 1) 
+    return 1;
+  else 
+    return n + sumRange(n - 1);
+}
+console.log(sumRange(3)); 
+ */
+
+
+// Power function
+
+/* function power (x, n) {
+  if (n === 0)
+    return 1;
+  else 
+    return x * (power(x, n-1));
+}
+console.log(power(2, 4));
+ */
+
+
+
+// Factorial
+
+/* function factorial (n) {
+  if (n === 1)
+    return 1;
+  else 
+    return n * factorial(n - 1);
+}
+console.log(factorial(5));
+ */
+
+
+
+// Check all values in an array
+
+const myArray = [1,2,9];
+
+function check (num) {
+	return num < 7;
+}
+
+function all (arr, callback) {
+
+  });
+}
+console.log(all(myArray, check));
 
 
     </script>
