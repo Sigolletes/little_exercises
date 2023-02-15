@@ -19,6 +19,9 @@ const requestLogger = (request, response, next) => {
 }
 app.use(requestLogger)
 
+// MIDDLEWARE STATIC FROM EXPRESS FOR SHOW INDEX.HTML FROM BUILD FOLDER IF THE GET REQUEST ADDRESS CORRESPOND TO www.example.com/index.html OR www.example.com
+app.use(express.static('build'))
+
 // NOTES ARRAY
 let notes = [
   {
