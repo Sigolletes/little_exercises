@@ -44,6 +44,9 @@ const app = express()
 const cors = require('cors')
 app.use(cors())
 
+// MIDDLEWARE STATIC FROM EXPRESS FOR SHOW INDEX.HTML FROM BUILD FOLDER IF THE GET REQUEST ADDRESS CORRESPOND TO www.example.com/index.html OR www.example.com
+app.use(express.static('build'))
+
 // EXPRESS JSON-PARSER FOR ACCESS DATA EASILY (creates body property)
 app.use(express.json())
 
@@ -56,9 +59,6 @@ const requestLogger = (request, response, next) => {
   next()
 }
 app.use(requestLogger)
-
-// MIDDLEWARE STATIC FROM EXPRESS FOR SHOW INDEX.HTML FROM BUILD FOLDER IF THE GET REQUEST ADDRESS CORRESPOND TO www.example.com/index.html OR www.example.com
-app.use(express.static('build'))
 
 // NOTES ARRAY
 let notes = [
@@ -80,6 +80,7 @@ let notes = [
 ]
 
 // RESPONSES TO THE REQUESTS (ROUTES)
+
 // app.get('/', (request, response) => {
 //   response.send('<h1>Hello World!</h1>')
 // })
@@ -95,10 +96,16 @@ app.get('/api/notes', (request, response) => {
   })
 })
 
-app.get('/api/notes/:id', (request, response) => {
-  Note.findById(request.params.id).then(note => {
-    response.json(note)
+app.get('/api/notes/:id', (request, response, next) => {
+  Note.findById(request.params.id)
+  .then(note => {
+    if (note) {
+      response.json(note)
+    } else {
+      response.status(404).end()
+    }
   })
+  .catch(error => next(error))
 })
 
 // const generateId = () => {
@@ -127,17 +134,48 @@ app.post('/api/notes', (request, response) => {
   })
 })
 
-// app.delete('/api/notes/:id', (request, response) => {
-//   const id = Number(request.params.id)
-//   notes = notes.filter(note => note.id !== id)
-//   response.status(204).end()
-// })
+app.put('/api/notes/:id', (request, response, next) => {
+  const body = request.body
+
+  const note = {
+    content: body.content,
+    important: body.important,
+  }
+
+  Note.findByIdAndUpdate(request.params.id, note, { new: true })
+    .then(updatedNote => {
+      response.json(updatedNote)
+    })
+    .catch(error => next(error))
+})
+
+app.delete('/api/notes/:id', (request, response, next) => {
+  Note.findByIdAndRemove(request.params.id)
+    .then(result => {
+      response.status(204).end()
+    })
+    .catch(error => next(error))
+})
 
 // MIDDLEWARE FOR CATCHING REQUESTS MADE TO NON-EXISTENT ROUTES (it has to be after routes)
 const unknownEndpoint = (request, response) => {
   response.status(404).send({ error: 'unknown endpoint' })
 }
 app.use(unknownEndpoint)
+
+// ERROR HANDLER MIDDLEWARE
+const errorHandler = (error, request, response, next) => {
+  console.error(error.message)
+
+  if (error.name === 'CastError') {
+    return response.status(400).send({ error: 'malformatted id' })
+  } 
+
+  next(error)
+}
+
+// this has to be the last loaded middleware.
+app.use(errorHandler)
 
 // THE WEB SERVER CREATED WITH EXPRESS (APP) IS ASSIGNED TO A PORT AND RESPOND TO THE REQUESTS OF THAT PORT
 const PORT = process.env.PORT
