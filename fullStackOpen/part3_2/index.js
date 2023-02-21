@@ -1,49 +1,44 @@
 // DOTENV
 require('dotenv').config()
 
+// IMPORT MODULE note.js
+const Note = require('./models/note')
+
 // EXPRESS FRAMEWORK FOR NODE.JS
 const express = require('express')
 const app = express()
 
-// ##################### MONGOOSE ################################
+// // ##################### MONGOOSE ################################
 
-// LIBRARY MONGOOSE (high-level API) IS AN ODM (Object Document Mapper) for saving JS objects as Mongo documents
-const mongoose = require('mongoose')
+// // LIBRARY MONGOOSE (high-level API) IS AN ODM (Object Document Mapper) for saving JS objects as Mongo documents
+// const mongoose = require('mongoose')
 
-// MongoDB URI
-const url =
-  `mongodb+srv://Aname:${process.env.PASSWORD}@cluster0.md7ambl.mongodb.net/noteApp?retryWrites=true&w=majority`
+// // MongoDB URI
+// const url = process.env.MONGODB_URI
 
-  // CONNECTION TO MongoDB
-mongoose.set('strictQuery',false)
-mongoose.connect(url)
+//   // CONNECTION TO MongoDB
+// mongoose.set('strictQuery',false)
+// mongoose.connect(url)
 
-// DEFINE THE SCHEMA FOR THE NOTE (tells Mongoose how the note objects are to be stored in the database) AND THE MATCHING MODEL
-const noteSchema = new mongoose.Schema({
-  content: String,
-  important: Boolean,
-})
+// // DEFINE THE SCHEMA FOR THE NOTE (tells Mongoose how the note objects are to be stored in the database) AND THE MATCHING MODEL
+// const noteSchema = new mongoose.Schema({
+//   content: String,
+//   important: Boolean,
+// })
 
-// FORMAT THE OBJECTS RETURNED BY MONGOOSE
-noteSchema.set('toJSON', {
-  transform: (document, returnedObject) => {
-    returnedObject.id = returnedObject._id.toString()
-    delete returnedObject._id
-    delete returnedObject.__v
-  }
-})
+// // FORMAT THE OBJECTS RETURNED BY MONGOOSE
+// noteSchema.set('toJSON', {
+//   transform: (document, returnedObject) => {
+//     returnedObject.id = returnedObject._id.toString()
+//     delete returnedObject._id
+//     delete returnedObject.__v
+//   }
+// })
 
-// Note MODEL DEFINITION (The name of the collection will be the lowercase plural notes) (Models are so-called constructor functions that create new JavaScript objects based on the provided parameters)
-const Note = mongoose.model('Note', noteSchema)
+// // Note MODEL DEFINITION (The name of the collection will be the lowercase plural notes) (Models are so-called constructor functions that create new JavaScript objects based on the provided parameters)
+// const Note = mongoose.model('Note', noteSchema)
 
-// HANDLER FOR FETCHING ALL NOTES 
-app.get('/api/notes', (request, response) => {
-  Note.find({}).then(notes => {
-    response.json(notes)
-  })
-})
-
-// ##################### MONGOOSE ################################
+// // ##################### MONGOOSE ################################
 
 // MIDDLEWARE CORS (Cross-Origin Resource Sharing) FOR ALLOW CROSS-ORIGIN REQUESTS
 const cors = require('cors')
@@ -85,30 +80,33 @@ let notes = [
 ]
 
 // RESPONSES TO THE REQUESTS (ROUTES)
-app.get('/', (request, response) => {
-  response.send('<h1>Hello World!</h1>')
-})
+// app.get('/', (request, response) => {
+//   response.send('<h1>Hello World!</h1>')
+// })
 
+// app.get('/api/notes', (request, response) => {
+//   response.json(notes)
+// })
+
+// HANDLER FOR FETCHING ALL NOTES 
 app.get('/api/notes', (request, response) => {
-  response.json(notes)
+  Note.find({}).then(notes => {
+    response.json(notes)
+  })
 })
 
 app.get('/api/notes/:id', (request, response) => {
-  const id = Number(request.params.id)
-  const note = notes.find(note => note.id === id)
-  if (note) {
+  Note.findById(request.params.id).then(note => {
     response.json(note)
-  } else {
-    response.status(404).end()
-  }
+  })
 })
 
-const generateId = () => {
-  const maxId = notes.length > 0
-    ? Math.max(...notes.map(n => n.id))
-    : 0
-  return maxId + 1
-}
+// const generateId = () => {
+//   const maxId = notes.length > 0
+//     ? Math.max(...notes.map(n => n.id))
+//     : 0
+//   return maxId + 1
+// }
 
 app.post('/api/notes', (request, response) => {
   const body = request.body
@@ -119,22 +117,21 @@ app.post('/api/notes', (request, response) => {
     })
   }
 
-  const note = {
+  const note = new Note({
     content: body.content,
     important: body.important || false,
-    date: new Date(),
-    id: generateId(),
-  }
+  })
 
-  notes = notes.concat(note)
-  response.json(note)
+  note.save().then(savedNote => {
+    response.json(savedNote)
+  })
 })
 
-app.delete('/api/notes/:id', (request, response) => {
-  const id = Number(request.params.id)
-  notes = notes.filter(note => note.id !== id)
-  response.status(204).end()
-})
+// app.delete('/api/notes/:id', (request, response) => {
+//   const id = Number(request.params.id)
+//   notes = notes.filter(note => note.id !== id)
+//   response.status(204).end()
+// })
 
 // MIDDLEWARE FOR CATCHING REQUESTS MADE TO NON-EXISTENT ROUTES (it has to be after routes)
 const unknownEndpoint = (request, response) => {
@@ -143,7 +140,7 @@ const unknownEndpoint = (request, response) => {
 app.use(unknownEndpoint)
 
 // THE WEB SERVER CREATED WITH EXPRESS (APP) IS ASSIGNED TO A PORT AND RESPOND TO THE REQUESTS OF THAT PORT
-const PORT = process.env.PORT || 3001
+const PORT = process.env.PORT
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
 })
