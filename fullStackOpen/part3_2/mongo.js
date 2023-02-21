@@ -16,7 +16,7 @@ const password = process.argv[2]
 const url =
   `mongodb+srv://Aname:${password}@cluster0.md7ambl.mongodb.net/noteApp?retryWrites=true&w=majority`
 
-  // CONNECTION TO MongoDB
+// CONNECTION TO MongoDB
 mongoose.set('strictQuery',false)
 mongoose.connect(url)
 

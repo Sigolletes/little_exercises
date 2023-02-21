@@ -1,6 +1,49 @@
+// DOTENV
+require('dotenv').config()
+
 // EXPRESS FRAMEWORK FOR NODE.JS
 const express = require('express')
 const app = express()
+
+// ##################### MONGOOSE ################################
+
+// LIBRARY MONGOOSE (high-level API) IS AN ODM (Object Document Mapper) for saving JS objects as Mongo documents
+const mongoose = require('mongoose')
+
+// MongoDB URI
+const url =
+  `mongodb+srv://Aname:${process.env.PASSWORD}@cluster0.md7ambl.mongodb.net/noteApp?retryWrites=true&w=majority`
+
+  // CONNECTION TO MongoDB
+mongoose.set('strictQuery',false)
+mongoose.connect(url)
+
+// DEFINE THE SCHEMA FOR THE NOTE (tells Mongoose how the note objects are to be stored in the database) AND THE MATCHING MODEL
+const noteSchema = new mongoose.Schema({
+  content: String,
+  important: Boolean,
+})
+
+// FORMAT THE OBJECTS RETURNED BY MONGOOSE
+noteSchema.set('toJSON', {
+  transform: (document, returnedObject) => {
+    returnedObject.id = returnedObject._id.toString()
+    delete returnedObject._id
+    delete returnedObject.__v
+  }
+})
+
+// Note MODEL DEFINITION (The name of the collection will be the lowercase plural notes) (Models are so-called constructor functions that create new JavaScript objects based on the provided parameters)
+const Note = mongoose.model('Note', noteSchema)
+
+// HANDLER FOR FETCHING ALL NOTES 
+app.get('/api/notes', (request, response) => {
+  Note.find({}).then(notes => {
+    response.json(notes)
+  })
+})
+
+// ##################### MONGOOSE ################################
 
 // MIDDLEWARE CORS (Cross-Origin Resource Sharing) FOR ALLOW CROSS-ORIGIN REQUESTS
 const cors = require('cors')
