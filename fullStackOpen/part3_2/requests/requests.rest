@@ -11,7 +11,7 @@ POST http://localhost:3001/api/notes
 Content-Type: application/json
 
 {
-  "content": "REST client is good in testing backend",
+  "content": "REST",
   "important": true
 }
 
@@ -20,7 +20,7 @@ PUT http://localhost:3001/api/notes/63ef4f720addf5ae95d9881b
 Content-Type: application/json
 
 {
-  "content": "TEST 3",
+  "content": "TEST",
   "important": true
 }
 
