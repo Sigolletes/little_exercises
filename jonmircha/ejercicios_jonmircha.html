@@ -1109,22 +1109,22 @@ order([7, 5, 7, 8, 16]);
 _______________________________________________________________________ */
 
 
-function noRepeat(arr = undefined) {
+// function noRepeat(arr = undefined) {
 
-  if (arr === undefined) return console.warn("You didn't pass anything");
+//   if (arr === undefined) return console.warn("You didn't pass anything");
 
-  if (!(arr instanceof Array)) return console.error("You didn't pass an array");
+//   if (!(arr instanceof Array)) return console.error("You didn't pass an array");
 
-  if (arr.length === 0) return console.error("The array is empty");
+//   if (arr.length === 0) return console.error("The array is empty");
 
-  let result = arr.filter((item, index) => {
-    return arr.indexOf(item) === index;
-  });
+//   let result = arr.filter((item, index) => {
+//     return arr.indexOf(item) === index;
+//   });
 
-  console.info(result);
-}
+//   console.info(result);
+// }
 
-noRepeat(["x", 10, "x", 2, "10", 10, true, true]);
+// noRepeat(["x", 10, "x", 2, "10", 10, true, true]);
 
 
 
@@ -1145,25 +1145,25 @@ noRepeat(["x", 10, "x", 2, "10", 10, true, true]);
 _______________________________________________________________________ */
 
 
-const average = (arr = undefined) => {
+// const average = (arr = undefined) => {
 
-  if (arr === undefined) return console.warn("You didn't pass anything");
+//   if (arr === undefined) return console.warn("You didn't pass anything");
 
-  if (!(arr instanceof Array)) return console.error("You didn't pass an array");
+//   if (!(arr instanceof Array)) return console.error("You didn't pass an array");
 
-  if (arr.length === 0) return console.error("The array is empty");
+//   if (arr.length === 0) return console.error("The array is empty");
 
-  for (let num of arr) {
-    if (typeof num !== "number") return console.error(`The value ${num} isn't a number`);
-  } 
+//   for (let num of arr) {
+//     if (typeof num !== "number") return console.error(`The value ${num} isn't a number`);
+//   } 
 
-  return console.info(arr.reduce(
-    (prev, curr) => prev + curr, 0
-  ) / arr.length)
+//   return console.info(arr.reduce(
+//     (prev, curr) => prev + curr, 0
+//   ) / arr.length)
 
-}
+// }
 
-average([1, 2, 3, 4]);
+// average([1, 2, 3, 4]);
 
 
 
@@ -1203,55 +1203,63 @@ La clase recibirá un objeto al momento de instanciarse con los siguentes datos:
 * Géneros Aceptados: Action, Adult, Adventure, Animation, Biography, Comedy, Crime, Documentary ,Drama, Family, Fantasy, Film Noir, Game-Show, History, Horror, Musical, Music, Mystery, News, Reality-TV, Romance, Sci-Fi, Short, Sport, Talk-Show, Thriller, War, Western.
 _______________________________________________________________________ */
 
-class Movie {
+// class Movie {
 
-  constructor([id, title, director, year, country, genre, rating]) {
+//   constructor([id, title, director, year, country, genre, rating]) {
 
-    if (!id || !title || !director || !year || !country || !genre || !rating) {
-      console.warn("All parameters are necessary");
-    }
+//     if (!id || !title || !director || !year || !country || !genre || !rating) {
+//       console.warn("All parameters are necessary");
+//     }
 
-    const regId = /[a-z]{2}\d{7}/i;
-    if (!regId.test(id)) {
-      console.warn("The id has to have 2 letters followed by 7 numbers");
-    }
+//     const regId = /[a-z]{2}\d{7}/i;
+//     if (!regId.test(id)) {
+//       console.warn("The id has to have 2 letters followed by 7 numbers");
+//     }
 
-    if (title.length > 100) {
-      console.warn("The maximum length for the title is 100 characters");
-    }
+//     if (title.length > 100) {
+//       console.warn("The maximum length for the title is 100 characters");
+//     }
 
-    if (director.length > 50) {
-      console.warn("The maximum length for the director is 50 characters");
-    }
+//     if (director.length > 50) {
+//       console.warn("The maximum length for the director is 50 characters");
+//     }
 
-    const regYear = /\d{4}/;
-    if (!regYear.test(year)) {
-      console.warn("The year has to have 4 numbers");
-    }
+//     const regYear = /\d{4}/;
+//     if (!regYear.test(year)) {
+//       console.warn("The year has to have 4 numbers");
+//     }
 
-    if (!(country instanceof Array)) return console.warn("The country or countries have to be entered in an array");
+//     if (!(country instanceof Array)) return console.warn("The country or countries have to be entered in an array");
 
-    if (!(genre instanceof Array)) return console.warn("The genre or genres have to be entered in an array");
+//     if (!(genre instanceof Array)) return console.warn("The genre or genres have to be entered in an array");
 
-    let acceptedGenre = ["action", "adult", "adventure", "animation", "biography", "comedy", "crime", "documentary", "drama", "family", "fantasy", "film noir", "game-show", "history", "horror", "musical", "music", "mistery", "news", "reality-tv", "romance", "sci-fi", "short", "talk-show", "thriller", "war", "western"];
+//     let acceptedGenre = ["action", "adult", "adventure", "animation", "biography", "comedy", "crime", "documentary", "drama", "family", "fantasy", "film noir", "game-show", "history", "horror", "musical", "music", "mistery", "news", "reality-tv", "romance", "sci-fi", "short", "talk-show", "thriller", "war", "western"];
 
-    this.id = id;
-    this.title = title;
-    this.director = director;
-    this.year = year;
-    this.country = country;
-    this.genre = genre;
-    this.rating = rating;
-  }
+//     this.id = id;
+//     this.title = title;
+//     this.director = director;
+//     this.year = year;
+//     this.country = country;
+//     this.genre = genre;
+//     this.rating = rating;
+//   }
 
-}
-
-
+// }
 
 
 
+// REGEX TESTING
 
+let reg = /^\d{8,}|^\d{2}[-]\d{6,}|^\d{3}[-]\d{5,}/;
 
+console.log(reg.test("12345678"));
+console.log(reg.test("12-345678"));
+console.log(reg.test("123-45678"));
+console.log(reg.test("12345678987654321"));
+console.log('#######################');
+console.log(reg.test("1234567"));
+console.log(reg.test("1-2345678"));
+console.log(reg.test("1234-5678"));
 
 
 
