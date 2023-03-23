@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function tests</title>              
+  </head>
+
+  <body>
+    <h1>Function tests</h1>
+
+    <script>
+
+/* AUTHOR WITH MORE BLOGS ########################################## */
+
+/* const list = [
+  {
+    _id: '1',
+    title: 'First',
+    author: 'Author 1',
+    url: 'first.blog',
+    likes: 5,
+    __v: 0,
+  },
+  {
+    _id: '2',
+    title: 'Second',
+    author: 'Author 2',
+    url: 'second.blog',
+    likes: 10,
+    __v: 0,
+  },
+  {
+    _id: '3',
+    title: 'Third',
+    author: 'Author 3',
+    url: 'third.blog',
+    likes: 15,
+    __v: 0,
+  },
+  {
+        _id: '4',
+        title: 'Forth',
+        author: 'Author 3',
+        url: 'forth.blog',
+        likes: 20,
+        __v: 0,
+      },
+];
+
+const mostBlogs = (list) => {
+  const count = {};
+
+  list.forEach((blog) => {
+    if (blog.author in count) {
+      count[blog.author] += 1;
+    } else {
+      count[blog.author] = 1;
+    }
+  });
+
+  const bigger = Object.keys(count).reduce((a, b) => (count[a] > count[b] ? a : b));
+
+  const final = {
+    author: bigger,
+    blogs: count[bigger],
+  };
+
+  return final;
+};
+
+console.log('retrurn', mostBlogs(list)); */
+
+/* ################################################################# */
+
+/* const list = [
+  {
+    _id: '1',
+    title: 'First',
+    author: 'Author 1',
+    url: 'first.blog',
+    likes: 5,
+    __v: 0,
+  },
+  {
+    _id: '2',
+    title: 'Second',
+    author: 'Author 2',
+    url: 'second.blog',
+    likes: 10,
+    __v: 0,
+  },
+  {
+    _id: '3',
+    title: 'Third',
+    author: 'Author 3',
+    url: 'third.blog',
+    likes: 15,
+    __v: 0,
+  },
+  {
+    _id: '4',
+    title: 'Forth',
+    author: 'Author 3',
+    url: 'forth.blog',
+    likes: 20,
+    __v: 0,
+  },
+];
+
+const mostLikes = (list) => {
+  const count = {};
+
+  list.forEach((blog) => {
+    if (blog.author in count) {
+      count[blog.author] += blog.likes;
+    } else {
+      count[blog.author] = blog.likes;
+    }
+  });
+
+  const bigger = Object.keys(count).reduce((a, b) => (count[a] > count[b] ? a : b));
+
+  const final = {
+    author: bigger,
+    likes: count[bigger],
+  };
+
+  return final;
+};
+
+console.log(mostLikes(list)); */
+
+    </script>
+  </body>
+</html>
